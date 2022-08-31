@@ -1,0 +1,140 @@
+\begin{section}{Euler’s Theorem}
+    
+    \begin{frame}{Euler’s Theorem on Planar Graph}
+    \begin{itemize}
+        \item Let G be a connected planar graph (drawn without crossing edges).
+        \pause
+        \item Define \newline $V = $ number of vertices
+            \newline $E = $ number of edges
+            \newline $F = $ number of faces, including the “infinite” face
+        \pause
+        \item Then $V - E + F = 2.$
+    \end{itemize}
+    
+    \end{frame}
+    
+    \begin{frame}{Proof}
+    \textbf{PROOF IDEA} \newline
+    Proof by induction by the number of cycles \newline \newline
+    \textbf{BASE CASE}
+    \begin{itemize}
+        \item G has no cycles \pause
+        \item Since G is connected, it must be a tree. So, $e = v-1$ and $f = 1$.
+        
+        \begin{align*} 
+v-e+f  &= v-(v-1)+1 \\ 
+        &=  1 +1\\
+        & = 2
+\end{align*}
+    \end{itemize}
+
+    \end{frame}
+    
+    \begin{frame}{Proof -- Continued}
+    \textbf{INDUCTION} 
+    \begin{itemize}
+        \item Let G has at least one cycle containing edge $e$ \pause
+        \item let $G' = G - e$ \pause
+    
+        \begin{columns}
+\column{0.6\textwidth}
+\begin{center}
+    \begin{tikzpicture}
+        \node (a) at (-5,0) [place] {};
+        \node (b) at (-4, .5) [place] {};
+        \node (c) at (-2, .5) [place] {};
+        \node (d) at (-1, 0) [place] {};
+        \node (e) at (-2, -.5) [place] {};
+        \node (f) at (-4, -.5) [place] {};
+        
+        \node <1-3> (o) at (0, 0)  {G};
+        \node <4-> (o) at (0, 0)  {G'};
+        
+        \node <1-3>  at (-4.3, .1) {e};
+        \draw <1-3> (a) -- (b) -- (c) -- (d) -- (e) -- (f) -- (a);
+        
+        \draw <4->  (b) -- (c) -- (d) -- (e) -- (f) -- (a);
+    
+    \end{tikzpicture}
+    \end{center}
+
+\column{0.4\textwidth}
+ $v' = $ number of vertices
+            \newline $e' = $ number of edges
+            \newline $f' = $ number of faces
+        
+\end{columns}    \pause
+    
+        \newline
+        \item Now, in $G', f' = f-1$ and $v' = v$ and $e' = e-1$ 
+        \item \textbf{By induction hypothesis:} 
+        $$v'-e' + f' = 2 $$
+       $$ v-(e-1)+(f-1)=2 $$
+       $$ v-e+f = 2 $$
+        
+    \end{itemize}
+        
+    \end{frame}
+    
+    \begin{frame}{Question}
+    \begin{center}
+    \textbf{Can you redraw this graph to alter the number of faces?} \newline
+    
+    \begin{tikzpicture}
+        \node (a) at (-5,0) [place] {};
+        \node (b) at (-4, 1) [place] {};
+        \node (c) at (-2, 1) [place] {};
+        \node (d) at (-1, 0) [place] {};
+        \node (e) at (-2, -1) [place] {};
+        \node (f) at (-4, -1) [place] {};
+        \node (g) at (-3, 0) [place] {};
+
+
+        \draw  (a) -- (b) -- (c) -- (d) -- (e) -- (f) -- (a);
+        \draw (b) -- (g) -- (f);
+     
+    
+    \end{tikzpicture}
+    \end{center}
+        
+    \end{frame}
+    
+    \begin{frame}{Corollary of Euler's Theorem}
+    \begin{block}{An interesting fact}
+     No matter how we redraw a planar graph it will always have the same number of faces
+    \end{block}
+    
+    
+    \textbf{Proof}\newline
+    $f=2-v+e $
+    
+        
+    \end{frame}
+\end{section}
+
+\begin{section}{Closing Remarks}
+
+    
+
+
+\begin{frame}{Acknowledgement}
+\small{
+\begin{itemize}
+    \item \url{https://mathweb.ucsd.edu/~gptesler/154/slides/154_planar_20-handout.pdf}
+    \item \url{https://www.slideserve.com/thor/planar-graphs}
+    \item \url{https://en.wikipedia.org/wiki/Planar_graph}
+    \end{itemize}
+}
+\end{frame}
+
+
+
+\begin{frame}{Further Reads}
+\url{https://ieeexplore.ieee.org/document/5206863} \newline \newline
+A very interesting application of planar graph is in ComputerVision \\
+Efficient planar graph cuts with applications in Computer Vision\\
+by Frank R. Schmidt et al.
+    
+\end{frame}
+
+\end{section}

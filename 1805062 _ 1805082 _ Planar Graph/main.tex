@@ -1,0 +1,138 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usetheme{Berlin}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{multicol}
+\setbeamercovered{transparent}% Dim out "inactive" elements
+\usepackage[export]{adjustbox}
+
+\title{Planar Graph}
+
+\author[1805062,1805082]{Ayesha Binte Mostofa \newline 1805062\newline Anup Bhowmik \newline 1805082}
+
+\institute[BUET]
+{
+  Department of Computer Science and Engineering\\
+  Bangladesh University of Engineering and Technology
+}
+\logo{\includegraphics[height=.8cm]{logo.png}}
+
+\date{\today}
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{We are going to see}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{Motivation}
+    \begin{itemize}
+        \item PCB (Printed Circuit Board) is designed by planar graph. \newline
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[height = 3cm]{PCB.jpeg}
+        \caption{PCB Circuit}
+    \end{figure}
+\end{frame}
+
+\tikzstyle{place}=[circle,draw=black!80,fill=black!30]
+
+\section{Introduction}
+
+
+\begin{frame}{Planar Graph}
+\begin{block}{Definition}
+A graph is called \textbf{{\color{blue}planar}} whether it can be drawn in the plane in such a way that no two edges cross.
+\end{block}
+\end{frame}
+
+\begin{frame}{Planar Graph}
+A clique on 4 nodes \newline
+\begin{center}
+\begin{tikzpicture}
+    \node<1-> (s) at (0,-5) [place] {};
+    \node<1-> (t) at (0,-7) [place] {};
+    \node<1-> (r) at (3,-5) [place] {};
+    \node<1-> (w) at (3,-7) [place] {};
+    \draw (s)--(t) -- (w) -- (r) -- (s);
+    \draw<1-1> (w)--(s);
+    \draw<1-1> (t)--(r);
+    \draw<2-4>[very thick,color = blue] (w)--(s);
+    \draw<2-4>[very thick,color = blue] (t)--(r);
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+    \item<2-4> Let's see whether it's a planar graph or not
+    \item<3-4> It has 6 edges, two of which crossing each other
+    \item<4-4> So,it is not a Planar Graph \newline
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Planar Graph}
+\begin{center}
+\begin{tikzpicture}
+    \node (s) at (0,-5) [place] {};
+    \node (t) at (0,-7) [place] {};
+    \node (r) at (3,-5) [place] {};
+    \node (w) at (3,-7) [place] {};
+    \draw (s)--(t) -- (w) -- (r) -- (s);
+    \draw[very thick,color = blue] (s)--(w);
+    \draw[very thick,color = blue] (t) .. controls (5,-9) .. (r);
+\end{tikzpicture}
+\end{center}
+ Another clique on 4 nodes with six edges \newline
+It's a planar Graph because no edges are crossing each other.
+\newline
+\end{frame}
+
+\section{Faces of a planar graph}
+\begin{frame}{Faces on a Planar Graph}
+        \begin{block}{Definition}
+       Consider a planar graph $G=(V,E)$ .A face is defined to be an area of the plane that is bounded by edges. A planar graph divides the planes into one or more \textbf{faces}. One of these faces always will be \emph{infinite}.
+        \end{block}
+\end{frame}
+
+\begin{frame}{Finding Faces of a Planar Graph}
+    \centering
+    \begin{tikzpicture}
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (0,0) (s);
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (0,-3) (t);
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (-3,-6) (r);
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (3,-6) (v) ;
+        
+        \fill<1-1> [inner color = yellow!40, outer color = white, color = white] (0, -3.5) circle (3cm) ;
+        \fill<1-1> [white] (s.center) -- (v.center) -- (r.center);
+        
+        \node<1-1> at (-6,-2) {\textbf{Infinite Face}}; 
+        
+        \node<2-4> at (-6,-2) {\textbf{Finite Face}}; 
+        \fill<2-2> [top color = blue!30, bottom color = white] (s.center) -- (t.center) -- (r.center);
+
+        \fill<3-3> [top color = red!30, bottom color = white] (s.center) -- (t.center) -- (v.center);
+        \fill<4-4> [top color = green!30, bottom color = white] (t.center) -- (r.center) -- (v.center);
+     
+        \draw (s) -- (t);
+        \draw (v) -- (t);
+        \draw (r) -- (t);
+        \draw (s) -- (r);
+        \draw (v) -- (r);
+        \draw (v) -- (s);
+
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (0,0) (s);
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (0,-3) (t);
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (-3,-6) (r);
+        \node [circle, minimum size = 10pt, very thick, fill = black!30] at (3,-6) (v);
+        
+    \end{tikzpicture}
+\end{frame}
+
+\input{Anup}
+
+
+\end{document}
