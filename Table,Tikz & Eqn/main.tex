@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{tikz}
+%math environment
+\usepackage{amsmath}
+\title{Tikz, Table & Eqn}
+\author{Ayesha Binte Mostofa}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% %equation centering and numbering
+% \begin{equation}
+%     x^n + y^n = z^n
+% \end{equation}
+
+% %equation centering without numbering
+% \begin{equation*}
+%     x^n+y^n=z^n
+% \end{equation*}
+% \begin{displaymath}
+% \sqrt{x^2+1}
+% \end{displaymath}
+% \begin{math}
+%  E = m*c
+% \end{math}
+
+
+
+% \begin{multicols}{3}
+%     $\tan\theta = \frac{\sin\theta}{\cos\theta}$  
+%     $\cot\theta = \frac{\cos\theta}{\sin\theta}$
+% \end{multicols} 
+% Reciprocal Identities
+
+\tikzstyle{p}=[circle,draw=black!80,fill=blue!30]
+\tikzstyle{o}=[circle,draw=black!80,fill=orange!80]
+\tikzstyle{g}=[circle,draw=black!80,fill=black!30]
+
+% \begin{multicols}{3}
+%     $\sin^2\theta+\cos^2\theta=1$
+%     $\cos\theta = \frac{1}{\sec\theta}$
+%     $\cos\theta = \frac{1}{\sec\theta}$
+%     $\sin^2\theta+\cos^2\theta=1$
+%     $\cos\theta = \frac{1}{\sec\theta}$
+%     $\cos\theta = \pm\frac{1}{\sec\theta}$
+% \end{multicols}
+\begin{center}
+\begin{tikzpicture}
+\draw[dashed,black] (0,0) -- (3,0);
+\draw[dashed,black] (3,0) -- (6,0);
+\node(f1) at ( 6,0) [o] {\color{white}3};
+\node(f2) at ( 3,0) [p] {17};
+\node(f3) at ( 0,0) [p] {23};
+\node(f4) at ( 5,-2) [g] {18};
+\node(f7) at ( 5,-4) [g] {39};
+\node(f5) at ( 6,-2) [p] {52};
+\node(f6) at ( 7,-2) [p] {41};
+\node(f8) at ( 7,-4) [p] {44};
+\draw[-] (f1) to (f4);
+\draw[-] (f1) to (f5);
+\draw[-] (f1) to (f6);
+\draw[-] (f4) to (f7);
+\draw[-] (f6) to (f8);
+\node(i) [above right] at (5.5,1) {\color{green}min};
+\draw[->] (i) to (f1);
+\end{tikzpicture}    
+\end{center}
+
+\newpage
+
+\begin{center}
+\begin{tabular}{||c|c|c||}
+\hline
+abc & cde & f  \\ [.5ex]
+\hline
+\hline
+abc & g & g\\
+\hline
+\end{tabular}
+\end{center}
+
+
+%multirow \multirow{number rows}{width}{text}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+     column1 & column2 & column3  \\
+     \hline
+     \multirow{3}{70pt}{Multiple row} & cell2 & cell3 \\ 
+     \cline{2-3}
+     & column1 & column3 \\
+     \hline
+     
+    \end{tabular}
+\end{center}
+
+\newpage
+
+%multicolumn \multicolumn{cols}{pos}{text}
+\begin{center}
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{MultiColumn}\\
+\hline
+  column1 & column2 & column3  \\
+  \hline
+   column4 & column5 & column6\\
+   \hline
+\end{tabular}
+
+
+\begin{tabular}{|c|c|c|c|}
+ \hline
+    $\sec\theta\cot\theta\sin\theta$ & $\sin^2\theta(\csc^2\theta-1)$ & $\cot\theta\sin\theta$  & $\frac{1-\sin^2\theta}{1+\sin^2\theta} $  \\
+\hline
+     1 & $\cos^2\theta$ & $\cos\theta$ & $\sin^2\theta\cos^2\theta$ \\
+     \hline
+     $\sec\theta$ & $\cos^2\theta$ & $\cos\theta$ & $\sin^2\theta\cos^2\theta$ \\
+     \hline
+     1 & $\cos^2\theta$ & $\cos\theta$ & $\sin^2\theta\cos^2\theta$ \\
+     \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \multicolumn{3}{|c|}{}\\
+    \hline
+    \multicolumn{3}{|c|}{}\\
+    \cline{1-1} \cline{3-3}
+         \multirow{2}{*}{}& &  \\
+         & & \\
+         \hline
+    \end{tabular}
+\end{center}
+\end{document}
